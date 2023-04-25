@@ -1,0 +1,50 @@
+<div class="table">
+  <ng-container *ngIf="roomsService.rooms$ | async as rooms">
+    <p-table [value]="rooms" [tableStyle]="{ 'width': 'max-content' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Номер кімнати</th>
+          <th>Назва</th>
+          <th>Зображення</th>
+          <th>Тип ліжка</th>
+          <th>Кількість людей</th>
+          <th>Ціна</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-room>
+        <tr>
+          <td>{{ room.id }}</td>
+          <td>{{ room.title }}</td>
+          <td>
+            <img [src]="room.image_url" [alt]="room.title" width="100" class="shadow-4"/>
+          </td>
+          <td>{{ room.bed_type }}</td>
+          <td>{{ room.people_count }}</td>
+          <td>{{ room.price }}</td>
+          <td>
+            <p-button
+              icon="pi pi-arrow-up-right"
+              styleClass="p-button-rounded p-button-text p-button-sm"
+              [routerLink]="'/rooms/' + room.id"
+            ></p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-file-edit" styleClass="p-button-rounded p-button-text p-button-sm"
+                      (onClick)="showCreateRoomModal({isEdit: true, roomId: room.id})"></p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-text p-button-sm"
+                      (onClick)="deleteRoom(room.id)"></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <div class="mt-5">
+      <p-button styleClass="p-button-rounded p-button-sm" label="Створити нову кімнату"
+                (click)="showCreateRoomModal({isEdit: false})"></p-button>
+    </div>
+  </ng-container>
+</div>

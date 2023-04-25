@@ -1,0 +1,10 @@
+.admin {
+  width: min-content;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+}
+
+::ng-deep .tabs .p-tabview-nav {
+  justify-content: center;
+}

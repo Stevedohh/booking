@@ -1,0 +1,52 @@
+<booking-layout backgroundImage="https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=pexels-pixabay-164595.jpg&fm=jpg">
+  <div class="bookingForm flex flex-column p-7 mx-auto bg-white align-items-center">
+    <h1 class="text-3xl font-semibold text-center ">Забронювати номер</h1>
+
+    <form class="flex flex-column row-gap-3 mt-5" [formGroup]="bookingForm" (ngSubmit)="onSubmit()">
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Дата</label>
+        <p-calendar selectionMode="range" formControlName="date" [readonlyInput]="true" styleClass="bookDateControl"></p-calendar>
+      </div>
+      <div class="flex column-gap-3">
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Ім'я</label>
+          <input type="text" pInputText formControlName="firstName" />
+        </div>
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Прізвище</label>
+          <input type="text" pInputText formControlName="secondName" />
+        </div>
+      </div>
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Email</label>
+        <input type="text" pInputText formControlName="email" />
+      </div>
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Телефон</label>
+        <input type="text" pInputText formControlName="phone" />
+      </div>
+
+      <div class="roomsGrid">
+        <div *ngFor="let room of rooms$ | async">
+          <div [hidden]="true">
+            <p-radioButton
+              [value]="room.id"
+              formControlName="room"
+              [inputId]="'room' + room.id"
+              [hidden]="true"
+            ></p-radioButton>
+          </div>
+          <label [for]="'room' + room.id" class="ml-2 cursor-pointer">
+            <booking-tiny-room-card
+              [room]="room"
+              [roomClass]="{'selectedRoom': bookingForm.value.room === room.id}"
+            ></booking-tiny-room-card>
+          </label>
+        </div>
+      </div>
+      <div class="mt-2 text-center">
+        <p-button label="Підтвердити" type="submit" styleClass="p-button-rounded" icon="pi pi-check-circle" [disabled]="bookingForm.invalid"></p-button>
+      </div>
+    </form>
+  </div>
+</booking-layout>

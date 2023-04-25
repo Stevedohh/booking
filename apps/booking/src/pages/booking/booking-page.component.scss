@@ -1,0 +1,21 @@
+.bookingForm {
+  width: 50vw;
+  position: relative;
+  z-index: 1;
+  border-radius: 25px;
+}
+
+::ng-deep .bookDateControl {
+  width: 100%;
+}
+
+.roomsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 500px;
+}
+
+::ng-deep .selectedRoom .room {
+  border: 3px solid #3b82f6;
+}

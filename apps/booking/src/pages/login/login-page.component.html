@@ -1,0 +1,18 @@
+<booking-layout backgroundImage="https://www.zastavki.com/pictures/1920x1200/2012/Interior_Hotel_Room_033155_.jpg">
+  <div class="login flex flex-column p-7 mx-auto bg-white align-items-center">
+    <h1 class="text-3xl font-semibold text-center ">Вхід</h1>
+    <form class="form flex flex-column row-gap-3 mt-5" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Email</label>
+          <input type="text" pInputText formControlName="email" />
+        </div>
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Пароль</label>
+          <input type="password" pInputText formControlName="password" />
+        </div>
+      <div class="mt-2 text-center">
+        <p-button label="Увійти" type="submit" styleClass="p-button-rounded" icon="pi pi-check-circle" [disabled]="loginForm.invalid"></p-button>
+      </div>
+    </form>
+  </div>
+</booking-layout>

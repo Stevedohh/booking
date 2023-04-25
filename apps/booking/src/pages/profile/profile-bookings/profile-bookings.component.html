@@ -1,0 +1,43 @@
+<div class="table">
+  <ng-container *ngIf="bookings.length else emptyView">
+    <p-table [value]="bookings" [tableStyle]="{ 'width': 'max-content' }">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Номер бронювання</th>
+          <th style="text-align: center">Дата</th>
+          <th>Зображення</th>
+          <th>Назва номеру</th>
+          <th>Кількість людей</th>
+          <th>Ціна</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-booking>
+        <tr>
+          <td>{{ booking.id }}</td>
+          <td>{{ booking.startDate }} - {{ booking.endDate }}</td>
+          <td>
+            <img [src]="booking.roomImage" [alt]="booking.roomName" width="100" class="shadow-4 rounded-full" />
+          </td>
+          <td>{{ booking.roomName }}</td>
+          <td>{{ booking.roomPeoples }}</td>
+          <td>{{ booking.roomPrice }}</td>
+          <td>
+            <p-button
+              icon="pi pi-arrow-up-right"
+              styleClass="p-button-rounded p-button-text p-button-sm"
+              [routerLink]="'/rooms/' + booking.roomId"
+            ></p-button>
+          </td>
+          <td>
+            <p-button icon="pi pi-times" styleClass="p-button-rounded p-button-danger p-button-text p-button-sm" (onClick)="deleteBooking(booking.id)"></p-button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </ng-container>
+  <ng-template #emptyView>
+    <h2 class="text-2xl font-semibold text-center w-full">У вас немає активних бронювань</h2>
+  </ng-template>
+</div>

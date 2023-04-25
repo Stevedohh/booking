@@ -1,0 +1,32 @@
+<booking-layout backgroundImage="https://www.zastavki.com/pictures/1920x1200/2012/Interior_Hotel_Room_033155_.jpg">
+  <div class="login flex flex-column p-7 mx-auto bg-white align-items-center">
+    <h1 class="text-3xl font-semibold text-center ">Реєстрація</h1>
+    <form class="form flex flex-column row-gap-3 mt-5" [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <div class="flex column-gap-3">
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Ім'я</label>
+          <input type="text" pInputText formControlName="first_name" />
+        </div>
+        <div class="flex flex-column w-full">
+          <label class="mb-2 font-semibold">Прізвище</label>
+          <input type="text" pInputText formControlName="second_name" />
+        </div>
+      </div>
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Email</label>
+        <input type="text" pInputText formControlName="email" />
+      </div>
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Телефон</label>
+        <input type="text" pInputText formControlName="phone" />
+      </div>
+      <div class="flex flex-column">
+        <label class="mb-2 font-semibold">Пароль</label>
+        <input type="password" pInputText formControlName="password" />
+      </div>
+      <div class="mt-2 text-center">
+        <p-button label="Зареєструватися" type="submit" styleClass="p-button-rounded" icon="pi pi-check-circle" [disabled]="registrationForm.invalid"></p-button>
+      </div>
+    </form>
+  </div>
+</booking-layout>

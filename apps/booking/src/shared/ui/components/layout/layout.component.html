@@ -1,0 +1,8 @@
+<p-toast></p-toast>
+<div [ngStyle]="{'background-image': 'url(' + backgroundImage + ')', 'background-color': backgroundColor}"
+     class="background min-h-screen max-h-full">
+  <booking-header></booking-header>
+  <div [ngClass]="{'p-6': withPadding}">
+    <ng-content></ng-content>
+  </div>
+</div>

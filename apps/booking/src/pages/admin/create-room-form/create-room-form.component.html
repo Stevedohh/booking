@@ -1,0 +1,45 @@
+<form class="form flex flex-column row-gap-3 mt-5" [formGroup]="roomForm" (ngSubmit)="onSubmit()">
+  <div class="flex column-gap-3">
+    <div class="flex flex-column w-full">
+      <label class="mb-2 font-semibold">Кількість людей</label>
+      <p-dropdown formControlName="people_count" styleClass="w-50 dropdownWidth" [options]="peopleCounts" placeholder="Кількість людей" optionLabel="value"></p-dropdown>
+    </div>
+    <div class="flex flex-column w-full">
+      <label class="mb-2 font-semibold">Тип ліжка</label>
+      <p-dropdown formControlName="bed_type" styleClass="w-50 dropdownWidth" [options]="bedType" placeholder="Виберіть тип ліжка" optionLabel="value"></p-dropdown>
+    </div>
+    <div class="flex flex-column w-full">
+      <label class="mb-2 font-semibold">Ціна</label>
+      <p-inputNumber formControlName="price" inputId="minmax" styleClass="dropdownWidth"></p-inputNumber>
+    </div>
+  </div>
+  <div class="flex flex-column">
+    <label class="mb-2 font-semibold">Назва</label>
+    <input type="text" pInputText formControlName="title" />
+  </div>
+  <div class="flex flex-column">
+    <label class="mb-2 font-semibold">Підназва</label>
+    <input type="text" pInputText formControlName="subtitle" />
+  </div>
+  <div class="flex flex-column">
+    <label class="mb-2 font-semibold">Посилання на зображення</label>
+    <input type="text" pInputText formControlName="image_url" />
+  </div>
+  <div class="flex flex-column">
+    <label class="mb-2 font-semibold">Стислий опис</label>
+    <input type="text" pInputText formControlName="description" />
+  </div>
+  <div class="flex flex-column">
+    <label class="mb-2 font-semibold">Розгорнутий опис</label>
+    <textarea rows="5" cols="30" pInputTextarea formControlName="long_description"></textarea>
+  </div>
+  <div class="mt-2 text-center">
+    <p-button
+      [label]="config.data.isEdit ? 'Оновити' : 'Створити!'"
+      type="submit"
+      styleClass="p-button-rounded"
+      icon="pi pi-check-circle"
+      [disabled]="roomForm.invalid"
+    ></p-button>
+  </div>
+</form>

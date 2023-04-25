@@ -1,0 +1,8 @@
+.table {
+  min-width: 400px;
+}
+
+::ng-deep .table td {
+  text-align: center!important;
+  vertical-align: middle;
+}

@@ -1,0 +1,33 @@
+<p-card [header]="room.title" styleClass="roomCard border-round-xl shadow-2" [subheader]="room.subtitle">
+  <ng-template pTemplate="header">
+    <img alt="Room image" [src]="room.imageUrl" class="border-round-xl image"/>
+  </ng-template>
+  <ng-template pTemplate="content" class="p-0">
+    <p-divider></p-divider>
+    <p class="line-height-2">{{room.description}}</p>
+    <p-divider></p-divider>
+  </ng-template>
+  <ng-template pTemplate="footer" class="p-0">
+    <div class="flex flex-column">
+      <ul>
+        <li class="flex my-2" *ngFor="let roomBenefit of room.benefits">
+          <span class="roomBenefitsKey font-semibold">{{roomBenefit.name}}:</span>
+          <span class="roomBenefitsValue font-semibold text-sm text-black-alpha-60">{{roomBenefit.value}}</span>
+        </li>
+      </ul>
+    </div>
+    <p-divider></p-divider>
+    <div class="flex justify-content-between mt-4">
+      <p-button
+        label="Детальніше"
+        styleClass="p-button-rounded p-button-sm"
+        [routerLink]="'/rooms/' + room.id"
+      ></p-button>
+      <p-button
+        (onClick)="onBookClick(room.id)"
+        label="Забронювати"
+        styleClass="p-button-rounded p-button-sm p-button-outlined p-button-secondary"
+      ></p-button>
+    </div>
+  </ng-template>
+</p-card>

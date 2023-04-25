@@ -1,0 +1,26 @@
+<booking-layout backgroundImage='https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fA%3D%3D&w=1000&q=80'>
+  <div class="mx-auto w-min mt-300">
+    <p-card styleClass="flex justify-content-center px-8">
+      <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+        <div class="flex column-gap-5 w-full">
+          <div class="flex flex-column w-max">
+            <label class="mb-2 font-semibold">Дата</label>
+            <p-calendar formControlName="date" selectionMode="range" [readonlyInput]="true"></p-calendar>
+          </div>
+          <div class="flex flex-column">
+            <label class="mb-2 font-semibold">Кількість людей</label>
+            <p-dropdown formControlName="peopleCount" styleClass="w-50 dropdownWidth" [options]="peopleCounts" placeholder="Кількість людей" optionLabel="value"></p-dropdown>
+
+          </div>
+          <div class="flex flex-column">
+            <label class="mb-2 font-semibold">Тип ліжка</label>
+            <p-dropdown formControlName="bedType" styleClass="w-50 dropdownWidth" [options]="bedType" placeholder="Виберіть тип ліжка" optionLabel="value"></p-dropdown>
+          </div>
+        </div>
+        <div class="mt-4 text-center">
+          <p-button label="Підібрати номер" type="submit" styleClass="p-button-rounded" icon="pi pi-search"></p-button>
+        </div>
+      </form>
+    </p-card>
+  </div>
+</booking-layout>

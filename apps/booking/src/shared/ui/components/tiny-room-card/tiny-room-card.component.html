@@ -1,0 +1,13 @@
+<p-card [header]="room.title" styleClass="room border-round-xl shadow-2" [ngClass]="roomClass">
+  <ng-template pTemplate="header">
+    <img alt="Room image" [src]="room.imageUrl" class="border-round-xl image"/>
+  </ng-template>
+  <div class="flex flex-column">
+    <ul>
+      <li class="flex my-2 w-100 justify-content-between" *ngFor="let roomBenefit of room.benefits">
+        <span class="roomBenefitsKey font-semibold text-sm">{{roomBenefit.name}}:</span>
+        <span class="roomBenefitsValue font-semibold text-sm text-black-alpha-60">{{roomBenefit.value}}</span>
+      </li>
+    </ul>
+  </div>
+</p-card>

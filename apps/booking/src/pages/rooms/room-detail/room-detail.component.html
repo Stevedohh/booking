@@ -1,0 +1,31 @@
+<booking-layout [backgroundColor]="backgroundColor" [withPadding]="false">
+  <div class="imageContainer">
+    <img [src]="room.imageUrl" alt="room" class="w-full h-full">
+  </div>
+  <div class="content flex flex-column py-7 mx-auto">
+    <h1 class="text-5xl font-semibold text-center">{{room.title}}</h1>
+    <span class="mt-5 text-2xl font-light text-center ">{{room.subtitle}}</span>
+    <p class="w-5 text-center mx-auto text-justify font-light text-lg line-height-3 mt-6">
+      {{room.longDescription}}
+    </p>
+    <p-divider></p-divider>
+    <div class="w-5 flex mx-auto">
+      <img [src]="room.imageUrl" [alt]="room.title" class="w-full">
+    </div>
+    <p-divider></p-divider>
+    <div class="flex flex-column justify-center">
+      <ul class="mx-auto">
+        <li class="flex my-2" *ngFor="let roomBenefit of room.benefits">
+          <span class="roomBenefitsKey font-semibold text-xl">{{roomBenefit.name}}:</span>
+          <span class="roomBenefitsValue font-semibold text-sm text-black-alpha-60 text-xl">{{roomBenefit.value}}</span>
+        </li>
+      </ul>
+    </div>
+    <p-button
+      (onClick)="onBookClick(room.id)"
+      label="Забронювати"
+      class="mx-auto"
+      styleClass="p-button-rounded p-button-md mt-5 p-button-outlined p-button-secondary mx-auto"
+    ></p-button>
+  </div>
+</booking-layout>
