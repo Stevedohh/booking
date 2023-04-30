@@ -16,8 +16,6 @@ export class AuthMiddleware implements NestMiddleware {
       return next();
     }
 
-
-
     const { email } = this.jwtService.verify(accessToken);
     const user = await this.userService.getUserByEmail(email);
     if (user) {
