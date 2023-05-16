@@ -10,7 +10,7 @@ import { LoginPayload } from '../../shared/api/auth/models';
 })
 export class LoginPageComponent {
   loginForm = new FormGroup({
-    email: new FormControl<string>('', [Validators.required]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
     password: new FormControl<string>('', [Validators.required])
   })
 

@@ -4,6 +4,7 @@ import { LoginPayload, RegisterPayload } from '../../shared/api/auth/models';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { MessageService } from 'primeng/api';
+import { catchError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +28,22 @@ export class AuthService {
   }
 
   login(payload: LoginPayload) {
-    return this.authApiService.login(payload).subscribe((jwt) => {
-      this.setSession(jwt.token);
-      this.userService.setUser();
-      this.router.navigateByUrl('/');
-    })
+    return this.authApiService.login(payload)
+      .pipe(
+        catchError((err) => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Помилка',
+            detail: 'Невірне ім\'я, або пароль'
+          })
+
+          throw new Error(err);
+        })
+      ).subscribe((jwt) => {
+        this.setSession(jwt.token);
+        this.userService.setUser();
+        this.router.navigateByUrl('/');
+      })
   }
 
   registration(payload: RegisterPayload) {
